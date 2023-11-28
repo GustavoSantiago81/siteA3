@@ -1,0 +1,143 @@
+<!-- ARQUIVO PRINCIPAL DE ENTRADA DO NAVEGADOR-->
+<!-- Declara o tipo de documento -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <!-- Metadados -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Titulo da aba -->
+    <title>Sistema Interno</title>
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- Chamada de scripts -->
+    <script src="./js/script.js"></script>
+    <script src="./js/tabela.js"></script>
+  </head>
+
+  <!-- Declaração de inicio do body, e já carrega a lista de dados da tabela -->
+  <body onload="listaTabela()">
+    <!-- Navbar -->
+    <div class="conjuntoNavHeader">
+      <header>
+        <h1>Sistema Interno</h1>
+      </header>
+      <nav>
+        <ul>
+          <li><a href="https://www.w3schools.com">Adicionar Relatorio</a></li>
+          <li><a>Cadastrar Funcionario</a></li>
+          <li><a href="./pages/adicionar_relatorio.html">Ações Corretivas</a></li>
+          <li><a>Editar Relatorio</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <main>
+      <div class="container">
+        <img
+          src="./assets/sistema de gestao imagem - Pesquisar_files/Beneficios-da-Gestao-Integrada-1.png"
+          alt="ERP"
+        />
+      </div>
+
+      <!-- AÇÕES CORRETIVAS -->
+      <div style="display: none">
+        <h1>Sistemas Eletrônicos</h1>
+        <h2>Digite o código do aparelho:</h2>
+        <input
+          type="text"
+          id="codigoAparelho"
+          placeholder="Digite o código do aparelho"
+        />
+        <button onclick="pesquisar()">Pesquisar</button>
+
+        <h2>Resultado da Pesquisa:</h2>
+        <p id="resultado"></p>
+
+        <h2>Selecione a opção desejada:</h2>
+        <label for="opcoes">PCI</label>
+        <select id="opcoes" onchange="mostrarOpcao()">
+          <option value="pciPrincipal">PCI Principal</option>
+          <option value="fonte">Fonte</option>
+          <option value="conexoes">Conexões</option>
+          <option value="saidas">Saídas</option>
+        </select>
+
+        <div id="opcoesPciPrincipal" style="display: none">
+          <h3>Opções de PCI Principal:</h3>
+          <select id="opcoesPci" onchange="mostrarOpcaoPci()">
+            <option value="placaNaoLiga">Placa não liga</option>
+            <option value="zona1NaoToca">Zona 1 não toca som</option>
+            <option value="zona2NaoToca">Zona 2 não toca som</option>
+            <!-- Adicione outras opções relacionadas à PCI Principal aqui -->
+          </select>
+          <p id="opcaoSelecionadaPci"></p>
+        </div>
+        <button onclick="listaTabela()">teste</button>
+      </div>
+      <!-- FIM DA SESSÃO DE OPÇÕES CORRETIVAS -->
+
+      <!-- INICIO DO CAMPO DE PESQUISA -->
+      <div class="pesquisa">
+        <h2>Digite o código do aparelho:</h2>
+        <input
+          type="text"
+          id="codigoAparelho"
+          placeholder="Digite o código do aparelho"
+        />
+        <button onclick="pesquisar()">Pesquisar</button>
+      </div>
+      <!-- FIM DO CAMPO DE PESQUISA -->
+
+      <!-- TABELA DE NÃO CONFORMES -->
+      <div class="content" style="height: 200px; overflow-y: scroll">
+        <table id="table" border="1">
+          <thead style="position: sticky; top: 0">
+            <tr>
+              <th>Nº</th>
+              <th>Data de Abertura</th>
+              <th>Código</th>
+              <th>Não Conformidade</th>
+              <th>Funcionario</th>
+            </tr>
+          </thead>
+          <tbody id="tbody" style="overflow-y: scroll">
+            <!-- Os dados serão preenchidos dinamicamente -->
+          </tbody>
+        </table>
+      </div>
+      <!-- FIM DA TABELA DE NÃO CONFORMES -->
+    </main>
+
+    <footer>Teste</footer>
+
+    <script>
+      function pesquisar() {
+        var codigoAparelho = document.getElementById("codigoAparelho").value;
+        var resultado = document.getElementById("resultado");
+        alert("foi");
+        if (codigoAparelho === "001") {
+          resultado.innerHTML = "Amplificador dualzone";
+        } else {
+          resultado.innerHTML = "Código do aparelho não encontrado";
+        }
+      }
+
+      function mostrarOpcao() {
+        var opcaoSelecionada = document.getElementById("opcoes").value;
+        var opcaoResultado = document.getElementById("opcaoSelecionada");
+        document.getElementById("opcoesPciPrincipal").style.display =
+          opcaoSelecionada === "pciPrincipal" ? "block" : "none";
+
+        opcaoResultado.innerHTML = "Opção selecionada: " + opcaoSelecionada;
+      }
+
+      function mostrarOpcaoPci() {
+        var opcaoSelecionadaPci = document.getElementById("opcoesPci").value;
+        var opcaoResultadoPci = document.getElementById("opcaoSelecionadaPci");
+        opcaoResultadoPci.innerHTML =
+          "Opção selecionada: " + opcaoSelecionadaPci;
+      }
+    </script>
+  </body>
+</html>
