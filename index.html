@@ -109,35 +109,7 @@
       <!-- FIM DA TABELA DE NÃO CONFORMES -->
     </main>
 
-    <footer>Teste</footer>
+    <footer>&copy;Gustavo Santiago</footer>
 
-    <script>
-      function pesquisar() {
-        var codigoAparelho = document.getElementById("codigoAparelho").value;
-        var resultado = document.getElementById("resultado");
-        alert("foi");
-        if (codigoAparelho === "001") {
-          resultado.innerHTML = "Amplificador dualzone";
-        } else {
-          resultado.innerHTML = "Código do aparelho não encontrado";
-        }
-      }
-
-      function mostrarOpcao() {
-        var opcaoSelecionada = document.getElementById("opcoes").value;
-        var opcaoResultado = document.getElementById("opcaoSelecionada");
-        document.getElementById("opcoesPciPrincipal").style.display =
-          opcaoSelecionada === "pciPrincipal" ? "block" : "none";
-
-        opcaoResultado.innerHTML = "Opção selecionada: " + opcaoSelecionada;
-      }
-
-      function mostrarOpcaoPci() {
-        var opcaoSelecionadaPci = document.getElementById("opcoesPci").value;
-        var opcaoResultadoPci = document.getElementById("opcaoSelecionadaPci");
-        opcaoResultadoPci.innerHTML =
-          "Opção selecionada: " + opcaoSelecionadaPci;
-      }
-    </script>
   </body>
 </html>
